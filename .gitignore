@@ -1,0 +1,6 @@
+.DS_Store
+*.pyc
+*.o
+*.obj
+*.a
+*.app
