@@ -34,12 +34,15 @@ do_start () {
 }
 do_stop () {
     log_daemon_msg "Stopping system $DAEMON_NAME daemon"
-    PID = `cat $PIDFILE`
-    PGID=$(ps -o pgid= $PID | grep -o [0-9]*)
-    kill -- -"$PGID"
-    rm $PIDFILE
+    if [ -f $PIDFILE ];
+    then
+        PID=$(cat $PIDFILE)
+        PGID=$(ps -o pgid= $PID | grep -o [0-9]*)
+        kill -- -"$PGID"
+        rm $PIDFILE
+    fi
     #start-stop-daemon --stop --pidfile $PIDFILE --retry 10
-    #log_end_msg $?
+    log_end_msg $?
 }
 
 case "$1" in
