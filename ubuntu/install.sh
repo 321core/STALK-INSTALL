@@ -11,8 +11,7 @@ sudo rm -rf /usr/sbin/stalkd
 sudo cp stalkd /usr/sbin
 sudo rm -rf /usr/bin/stalk
 sudo cp stalk /usr/sbin
-echo "*** Detect init system..."
-RET=$(ps -p1 | grep system)
+RET=$(ps -p1 | grep system) || true
 if [ -n "$RET" ]; then
 	echo "*** install STALK as Systemd service..."
 	sudo rm -rf /lib/systemd/system/stalk.service
@@ -25,4 +24,3 @@ else
 	sudo cp stalk.conf /etc/init/
 	sudo service stalk start
 fi
-echo "*** STALL installed."
