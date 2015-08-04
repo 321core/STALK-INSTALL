@@ -10,8 +10,7 @@ sudo cp stalkd /usr/sbin
 sudo rm -rf /usr/bin/stalk || true
 sudo cp stalk /usr/sbin
 RET=$(ps -p1 | grep system)
-if [ -n "$RET" ]; 
-then
+if [ -n "$RET" ]; then
   echo "install STALK as Systemd service..."
   sudo rm -rf /lib/systemd/system/stalk.service || true
   sudo cp stalk.service /lib/systemd/system/
