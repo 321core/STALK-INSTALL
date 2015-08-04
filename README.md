@@ -16,7 +16,7 @@
 
 ## Cygwin
 1. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-cygwin.sh
-2. cygstart --action=runas sh install-cygwin.sh
+2. sh install-cygwin.sh
 
 
 # How To Use
