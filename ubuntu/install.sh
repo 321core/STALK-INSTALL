@@ -11,13 +11,13 @@ sudo rm -rf /usr/bin/stalk || true
 sudo cp stalk /usr/sbin
 RET=$(ps -p1 | grep system)
 if [ -n "$RET" ]; 
-then # SYSTEMD
+then
   echo "install STALK as Systemd service..."
   sudo rm -rf /lib/systemd/system/stalk.service || true
   sudo cp stalk.service /lib/systemd/system/
   sudo systemctl enable stalk.service
   sudo systemctl start stalk.service
-else # UPSTART
+else
   echo "install STALK as Upstart service..."
   sudo rm -rf /etc/init/stalk.conf || true
   sudo cp stalk.conf /etc/init/
