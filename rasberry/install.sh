@@ -9,3 +9,4 @@ sudo cp stalk-service /etc/init.d/stalk
 sudo cp stalkd /usr/sbin
 sudo cp stalk /usr/sbin
 sudo service stalk start
+sudo update-rc.d stalk defaults
