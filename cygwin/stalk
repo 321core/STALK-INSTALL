@@ -1,0 +1,3 @@
+#!/bin/bash
+python /usr/share/stalk/shell/talk.py $@
+
