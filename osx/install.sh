@@ -19,3 +19,4 @@ sudo rm -rf /Library/LaunchAgents/com.321core.stalk.plist
 sudo cp com.321core.stalk.plist /Library/LaunchAgents/
 sudo launchctl load -w /Library/LaunchAgents/com.321core.stalk.plist
 sudo launchctl start com.321core.stalk
+open 'http://localhost:8900'
