@@ -16,10 +16,11 @@
 
 ## Cygwin
 1. First, the following items must be installed on Cygwin
-- python
-- git
-- wget
-- cygrunsrv
+       * python
+       * git
+       * wget
+       * cygrunsrv
+
 2. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-cygwin.sh
 3. sh install-cygwin.sh
 4. run Cygwin terminal as Administrator and type this: 
