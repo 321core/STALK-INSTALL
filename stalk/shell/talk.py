@@ -4,17 +4,10 @@
 
 import optparse
 import json
-from socket import AF_INET, SOCK_STREAM, SOL_SOCKET, SO_KEEPALIVE, IPPROTO_TCP
+from socket import AF_INET, SOCK_STREAM, SOL_SOCKET, SO_KEEPALIVE, IPPROTO_TCP, \
+                   TCP_KEEPINTVL, TCP_KEEPCNT
 import socket
 
-# for Cygwin
-try:
-  from socket import TCP_KEEPINTVL, TCP_KEEPCNT
-except ImportError:
-  TCP_KEEPINTVL = None
-  TCP_KEEPCNT = None
-  
-  
 DEFAULT_SERVICE_PORT = 8989
 service_port = DEFAULT_SERVICE_PORT
 
@@ -27,12 +20,11 @@ def request(line):
     assert isinstance(line, str)
     s = socket.socket(AF_INET, SOCK_STREAM)
     s.setsockopt(SOL_SOCKET, SO_KEEPALIVE, 1)
-    
-    if TCP_KEEPINTVL is not None:
-      s.setsockopt(IPPROTO_TCP, TCP_KEEPINTVL, 3)
-    
-    if TCP_KEEPCNT is not None:
-      s.setsockopt(IPPROTO_TCP, TCP_KEEPCNT, 5)
+    if hasattr(socket, 'TCP_KEEPIDLE'):
+        s.setsockopt(IPPROTO_TCP, socket.TCP_KEEPIDLE, 1)
+
+    s.setsockopt(IPPROTO_TCP, TCP_KEEPINTVL, 3)
+    s.setsockopt(IPPROTO_TCP, TCP_KEEPCNT, 5)
 
     try:
         s.connect(('localhost', service_port))
@@ -182,8 +174,12 @@ elif cmd == 'client':
 
     ret = client(channel, port)
 
-    if port is None:
+    if isinstance(ret, int) and port is None:
         print 'Local port:%d' % ret
+
+    if isinstance(ret, (str, unicode)):
+        print ret
+
 
 elif cmd == 'kill':
     id = int(args[1])
@@ -191,3 +187,4 @@ elif cmd == 'kill':
 
 else: # TODO: print usage (help)
     pass
+
