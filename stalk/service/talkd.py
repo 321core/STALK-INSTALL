@@ -2,19 +2,21 @@
 # -*- coding: utf-8 -*-
 # talkd.py
 
-import sys
 import os
 import optparse
 from socket import AF_INET, SOCK_STREAM, SOCK_DGRAM, SOL_SOCKET, \
     SO_REUSEADDR, SO_KEEPALIVE, SO_BROADCAST
 import socket
-import json
 import threading
 import time
 import subprocess
+import traceback
+
+import requests
 
 import core
 import webui
+
 
 
 #
@@ -83,7 +85,7 @@ def service_handler(s, addr):
         try:
             idx = buf.index('\n')
             line = buf[:idx]
-            buf = buf[idx+1:]
+            buf = buf[idx + 1:]
             ret = process_line(line)
             try:
                 s.sendall(ret + '\0')
@@ -97,12 +99,22 @@ def service_handler(s, addr):
 
 # discovery
 def broadcast():
-    message = 'STALKAGENT@%s\nWEB_UI:%d\nWEB_SSH:%d\nACCOUNT:%s' % \
-              (socket.gethostname(), core.conf.WEBUI_PORT, core.conf.WEBSSH_PORT, core.conf.USER_NAME)
-
+    server_key = ''
     s = None
-    
+
     while True:
+        try:
+            url = 'http://%s/identity/' % core.conf.INDEX_SERVER_BASE_URL
+            ret = requests.get(url, timeout=5)
+            server_key = ret.json()['result']['identity']
+
+        except Exception:
+            traceback.print_exc()
+            pass
+
+        message = 'STALKAGENT@%s\nWEB_UI:%d\nWEB_SSH:%d\nACCOUNT:%s\nSERVER:%s' % \
+                  (socket.gethostname(), core.conf.WEBUI_PORT, core.conf.WEBSSH_PORT, core.conf.USER_NAME, server_key)
+
         try:
             if s is None:
                 s = socket.socket(AF_INET, SOCK_DGRAM)
@@ -115,6 +127,7 @@ def broadcast():
             traceback.print_exc()
             time.sleep(1.0)
             s = None
+
 
 t = threading.Thread(target=broadcast)
 t.setDaemon(True)
