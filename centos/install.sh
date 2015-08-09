@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 echo "*** Update Modules..."
+yum install epel-release
 sudo yum install -y python-pip
 sudo pip install flask --upgrade
 sudo pip install requests --upgrade
