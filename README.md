@@ -37,6 +37,11 @@
    If pop up a page correctly, stalk is successfully installed.
 
 
+## Android APK
+
+1. https://raw.githubusercontent.com/321core/STALK-INSTALL/master/android-app/app-debug.apk
+
+
 # How To Use
 
 Coming Soon...
