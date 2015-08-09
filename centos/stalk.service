@@ -1,0 +1,9 @@
+[Unit]
+Description=STALK Agent
+
+[Service]
+PIDFile=/var/run/stalkd.pid
+ExecStart=/usr/sbin/stalkd
+
+[Install]
+WantedBy=multi-user.target

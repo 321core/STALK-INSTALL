@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 echo "*** Update Modules..."
-sudo apt-get install python-pip -y
+sudo yum install -y python-pip
 sudo pip install flask --upgrade
 sudo pip install requests --upgrade
 echo "*** Copy executables..."
