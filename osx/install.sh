@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo launchctl stop com.321core.stalk || true
+launchctl unload /Library/LaunchAgents/com.321core.stalk.plist || true
 sudo rm -rf /opt/stalk
 sudo mkdir -p /opt
 sudo cp -r ../stalk /opt/
