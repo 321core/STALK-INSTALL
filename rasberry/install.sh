@@ -11,6 +11,7 @@ sudo cp stalkd /usr/sbin
 sudo cp stalk /usr/sbin
 sudo service stalk start
 sudo update-rc.d stalk defaults
+sleep 5s
 BASE=$(echo 'import socket;print socket.gethostname().lower().replace(".", "-")' | python)
 stalk server $BASE-web localhost 80
 stalk server $BASE-tsdb localhost 4242
