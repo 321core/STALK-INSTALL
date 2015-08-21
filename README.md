@@ -1,23 +1,23 @@
-# How To Install
+# How To Install sTalk to various operating system sw
 
-## Ubuntu
+## stalk on Ubuntu
 1. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-ubuntu.sh
 2. sh install-ubuntu.sh
 
-## CentOS
+## stalk on CentOS
 1. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-centos.sh
 2. sh install-centos.sh
 
-## OS-X
+## stalk on OS-X
 1. First, git should be installed on your mac.
 2. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-osx.sh
 3. sh install-osx.sh
 
-## Rasberry PI
+## stalk on Rasberry PI
 1. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-rasberry.sh
 2. sh install-rasberry.sh
 
-## Cygwin
+## stalk on Cygwin
 1. First, the following items must be installed on Cygwin
        * python
        * git
@@ -37,11 +37,13 @@
    If pop up a page correctly, stalk is successfully installed.
 
 
-## Android APK
+## stalk on Android APK
 
 1. https://raw.githubusercontent.com/321core/STALK-INSTALL/master/android-app/app-debug.apk
 
 
 # How To Use
 
-Coming Soon...
+  - after installation
+    - ssh 22 port is automatically registered to Server
+   
