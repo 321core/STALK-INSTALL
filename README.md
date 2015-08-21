@@ -46,4 +46,21 @@
 
   - after installation
     - ssh 22 port is automatically registered to Server
-   
+  
+  - list entries
+    ```
+    stalk status 
+    ```
+  - register server entry
+    ```
+    stalk server CHANNEL_NAME HOST_ADDR HOST_PORT
+    ```
+  - register client entry
+    ```
+    stalk client CHANNEL_NAME LOCAL_PORT
+    ```
+  
+  - cancel entry
+    ```
+    stalk kill ENTRY_ID
+    ```
