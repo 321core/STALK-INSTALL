@@ -51,10 +51,12 @@
     ```
     stalk status 
     ```
+    
   - register server entry
     ```
     stalk server CHANNEL_NAME HOST_ADDR HOST_PORT
     ```
+    
   - register client entry
     ```
     stalk client CHANNEL_NAME LOCAL_PORT
