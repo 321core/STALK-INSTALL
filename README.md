@@ -13,7 +13,7 @@
 2. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-osx.sh
 3. sh install-osx.sh
 
-## stalk on Rasberry PI
+## stalk on Raspberry PI
 1. wget https://raw.githubusercontent.com/321core/STALK-INSTALL/master/install-rasberry.sh
 2. sh install-rasberry.sh
 
