@@ -26,12 +26,12 @@ def add_server_if_not_registered(channel, port):
 
     core.server(channel, ('localhost', port))
 
-def init():  # 자동으로 SSH 포트를 등록한다. 이게 옳은 건지 판단해보아야.\
+def init():  # 자동으로 SSH 포트를 등록한다. 이게 옳은 건지 판단해보아야.
     # restore
     core.restore()
 
     # SSH
-    # 설치자에게 y / n 를 물어보면 좋겠음. 디폴트는 n
+    # (위 29라인 의견) SW 설치자, 사용자에게 y / n 를 물어보면 좋겠음. 디폴트는 n
     channel = socket.gethostname().lower().replace('.', '-')
     add_server_if_not_registered(channel + '-ssh', 22)
     core.save()
